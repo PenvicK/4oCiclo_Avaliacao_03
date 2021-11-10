@@ -56,6 +56,14 @@ public class ContactsService {
     public ContactsModel update(Long id, ContactsModel update){
         ContactsModel updated = findById(id);
 
+        Optional<ContactsModel> contactsEmail = repository.findByEmail(update.getEmail());
+        if(contactsEmail.isPresent()){
+            throw new ContactsAlreadyExistsException("Contacts already exists");
+        }
+        Optional<ContactsModel> contactsTelephone = repository.findByTelephone(update.getTelephone());
+        if(contactsTelephone.isPresent()){
+            throw new ContactsAlreadyExistsException("Contacts already exists");
+        }
         updated.setName(update.getName());
         updated.setEmail(update.getEmail());
         updated.setTelephone(update.getTelephone());

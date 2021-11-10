@@ -24,12 +24,12 @@ public class ContactsController {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/id/{id}")
     public ResponseEntity<ContactsModel> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @GetMapping(path = "/{email}")
+    @GetMapping(path = "/email/{email}")
     public ResponseEntity<ContactsModel> show(@PathVariable String email) {
         return ResponseEntity.ok(service.show(email));
     }
@@ -44,6 +44,11 @@ public class ContactsController {
         } catch (ServiceException e) {
             return ResponseEntity.unprocessableEntity().build();
         }
+    }
+
+    @PutMapping(path = "/{id}")
+    public ResponseEntity<ContactsModel> editFederativeUnit(@PathVariable Long id, @RequestBody ContactsModel update){
+        return ResponseEntity.ok(service.update(id, update));
     }
 
     @DeleteMapping(path = "/{id}")

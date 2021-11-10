@@ -20,6 +20,7 @@ public class ContactsModel {
     private String telephone;
 
     public ContactsModel(ContactsModel entity){
+        id = entity.getId();
         name = entity.getName();
         email = entity.getEmail();
         telephone = entity.getTelephone();
