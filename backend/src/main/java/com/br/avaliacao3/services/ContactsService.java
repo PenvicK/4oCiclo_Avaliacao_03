@@ -34,13 +34,10 @@ public class ContactsService {
     public ContactsModel create(ContactsModel contacts){
 
         Optional<ContactsModel> contactsEmail = repository.findByEmail(contacts.getEmail());
-        if(contactsEmail.isPresent()){
-            throw new ContactsAlreadyExistsException("Contacts already exists");
-        }
-
         Optional<ContactsModel> contactsTelephone = repository.findByTelephone(contacts.getTelephone());
-        if(contactsTelephone.isPresent()){
-            throw new ContactsAlreadyExistsException("Contacts already exists");
+
+        if(contactsEmail.isPresent() || contactsTelephone.isPresent()){
+            throw new ContactsAlreadyExistsException("Contact already exists");
         }
 
         ContactsModel unit = new ContactsModel();
@@ -57,13 +54,10 @@ public class ContactsService {
         ContactsModel updated = findById(id);
 
         Optional<ContactsModel> contactsEmail = repository.findByEmail(update.getEmail());
-        if(contactsEmail.isPresent()){
-            throw new ContactsAlreadyExistsException("Contacts already exists");
-        }
-
         Optional<ContactsModel> contactsTelephone = repository.findByTelephone(update.getTelephone());
-        if(contactsTelephone.isPresent()){
-            throw new ContactsAlreadyExistsException("Contacts already exists");
+
+        if(contactsEmail.isPresent() || contactsTelephone.isPresent()){
+            throw new ContactsAlreadyExistsException("Contact already exists");
         }
 
         updated.setName(update.getName());

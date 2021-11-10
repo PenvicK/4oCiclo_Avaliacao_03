@@ -35,25 +35,25 @@ public class ContactsController {
     }
 
     @PostMapping
-    public ResponseEntity<ContactsModel> create(@RequestBody ContactsModel entity) {
+    public ResponseEntity<ContactsModel> create(@RequestBody ContactsModel entity) throws Exception {
         try {
             ContactsModel obj = service.create(entity);
             URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                     .buildAndExpand(obj.getId()).toUri();
-            return ResponseEntity.created(uri).body(obj);
+        return ResponseEntity.created(uri).body(obj);
         } catch (ServiceException e) {
             return ResponseEntity.unprocessableEntity().build();
         }
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<ContactsModel> editFederativeUnit(@PathVariable Long id, @RequestBody ContactsModel update){
+    public ResponseEntity<ContactsModel> update(@PathVariable Long id, @RequestBody ContactsModel update){
         return ResponseEntity.ok(service.update(id, update));
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id){
         service.delete(id);
-        return ResponseEntity.ok("User " + id + " deleted!");
+        return ResponseEntity.ok("Contact " + id + " deleted!");
     }
 }
