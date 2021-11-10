@@ -6,7 +6,6 @@ import com.br.avaliacao3.models.ContactsModel;
 import com.br.avaliacao3.repositories.ContactsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,6 +37,7 @@ public class ContactsService {
         if(contactsEmail.isPresent()){
             throw new ContactsAlreadyExistsException("Contacts already exists");
         }
+
         Optional<ContactsModel> contactsTelephone = repository.findByTelephone(contacts.getTelephone());
         if(contactsTelephone.isPresent()){
             throw new ContactsAlreadyExistsException("Contacts already exists");
@@ -60,10 +60,12 @@ public class ContactsService {
         if(contactsEmail.isPresent()){
             throw new ContactsAlreadyExistsException("Contacts already exists");
         }
+
         Optional<ContactsModel> contactsTelephone = repository.findByTelephone(update.getTelephone());
         if(contactsTelephone.isPresent()){
             throw new ContactsAlreadyExistsException("Contacts already exists");
         }
+
         updated.setName(update.getName());
         updated.setEmail(update.getEmail());
         updated.setTelephone(update.getTelephone());
