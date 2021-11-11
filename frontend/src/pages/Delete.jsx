@@ -11,8 +11,8 @@ function Delete() {
   }, []);
 
   async function handleContact() {
-    const response = await api.delete("/contacts/" + id);
-
+    const response = await api.delete("/contacts/delete/"+id);
+    console.log(id);
     if (response.status == 200) {
         alert("Contacto deleted");
     } else {
@@ -33,7 +33,7 @@ function Delete() {
             Back
           </button>
         </Link>
-        <form onSubmit={handleSubmit} className="flex-delete">
+        <form onSubmit={handleContact} className="flex-delete">
           <input
             onChange={(value) => setId(value.target.value)}
             value={id}

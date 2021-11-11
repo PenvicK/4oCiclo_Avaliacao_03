@@ -51,7 +51,7 @@ public class ContactsController {
         return ResponseEntity.ok(service.update(id, update));
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<String> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.ok("Contact " + id + " deleted!");
