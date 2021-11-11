@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/home.css';
+import '../styles/create.css';
 import api from "../api";
 import {Link} from "react-router-dom";
 
@@ -18,29 +18,20 @@ function Create(){
         }
         api.post('/contacts', postContacts).then((resp) => {
             console.log(resp);
-        });
-
-        // const handleChangeName = (e) =>{
-        //     setName(e.target.value)
-        //     e.preventDefault();
-        // }
-        // const handleChangeEmail = (e) =>{
-        //     setEmail(e.target.value)
-        //     e.preventDefault();
-        // }
-        // const handleChangeTelephone = (e) =>{
-        //     setTelephone(e.target.value)
-        //     e.preventDefault();
-        // }
+        
+        }   );
+        setName("");
+        setEmail("");
+        setTelephone("");
 
     }
     return(
-        <>
-            <form className="form-create" onSubmit={handleSubmit}>
-                <Link to="/">
-                    <button type="button" className="btn-back">Back</button>
+        <div className="form-create">
+            <form onSubmit={handleSubmit}>
+                <Link to="/" id="btn-page-create">
+                    <button type="button" className="btn-back-create">Back</button>
                 </Link>
-                <ul>
+                <ul className="ul-create">
                     <li>
                         <input onChange={value => setName(value.target.value)} value={contactName} className="input-create" type="text" placeholder="Name"></input>
                     </li>
@@ -51,11 +42,11 @@ function Create(){
                         <input onChange={value => setTelephone(value.target.value)} value={contactTelephone} className="input-create" type="text" placeholder="Telephone"></input>
                     </li>
                     <li>
-                        <button id="btn-form-submit" type="submit" className="input-create">Submit</button>
+                        <button id="btn-form-submit-create" type="submit" className="input-create">Submit</button>
                     </li>
                 </ul>
             </form>
-        </>
+        </div>
     );
 }
 export default Create;
