@@ -11,23 +11,19 @@ function Delete() {
   }, []);
 
   async function handleContact() {
-    const response = await api.delete("/contacts/delete/"+id);
+    const response = await api.delete("/contacts/delete/" + id);
     console.log(id);
     if (response.status == 200) {
-        alert("Contacto deleted");
+      alert("Contacto deleted");
     } else {
-        alert("Error");
+      alert("Error");
     }
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(id);
-    setId("");
-  };
+  
 
   return (
     <div className="container-delete">
-      <div >
+      <div>
         <Link to="/" id="btn-page-delete">
           <button type="button" className="btn-back-delete">
             Back
@@ -41,7 +37,11 @@ function Delete() {
             className="input-create"
             id="input-delete"
           />
-          <button id="btn-form-submit-delete" type="submit" className="input-create">
+          <button
+            id="btn-form-submit-delete"
+            type="submit"
+            className="input-create"
+          >
             Submit
           </button>
         </form>

@@ -33,13 +33,13 @@ function Create(){
                 </Link>
                 <ul className="ul-create">
                     <li>
-                        <input onChange={value => setName(value.target.value)} value={contactName} className="input-create" type="text" placeholder="Name"></input>
+                        <input onChange={value => setName(value.target.value)} value={contactName} className="input-create" type="text" placeholder="Name" id="name"></input>
                     </li>
                     <li>
-                        <input onChange={value => setEmail(value.target.value)} value={contactEmail} className="input-create" type="text" placeholder="Email"></input>
+                        <input onChange={value => setEmail(value.target.value)} value={contactEmail} className="input-create" type="text" placeholder="Email" id="email"></input>
                     </li>
                     <li>
-                        <input onChange={value => setTelephone(value.target.value)} value={contactTelephone} className="input-create" type="text" placeholder="Telephone"></input>
+                        <input onChange={value => setTelephone(value.target.value)} value={contactTelephone} className="input-create" type="text" placeholder="Telephone" id="telephone"></input>
                     </li>
                     <li>
                         <button id="btn-form-submit-create" type="submit" className="input-create">Submit</button>

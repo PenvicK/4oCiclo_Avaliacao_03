@@ -45,6 +45,7 @@ class Index extends Component {
               </p>
             </div>
           ))}
+          
         </div>
       </div>
     );
